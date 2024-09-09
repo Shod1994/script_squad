@@ -1,0 +1,21 @@
+body{
+    background-color: lightskyblue; 
+}
+
+.container{
+    display: flex;
+    justify-content:center;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 1px;
+    border: white 8px solid;
+}
+
+img{
+    height: 250px;
+    zoom: 85%;
+}
