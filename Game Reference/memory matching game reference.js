@@ -15,6 +15,23 @@ document.addEventListener("DOMContentLoaded", function () {
     "./Images/RedEyesBlackDragonCard.png",
     "./Images/PotOfGreedCard.png",
     "./Images/MonsterRebornCard.png",
-    "Images/ExodiatheForbiddenOneCard.png",
+    "./Images/ExodiatheForbiddenOneCard.png",
   ];
+
+  //Arrow Function that Shuffles Cards In The Array Above On Each Refresh
+  cards.sort(() => Math.random() - 0.5);
+
+  //Loop to insert cards in grid
+  for(let i = 1; i <= 12; i++){
+  let selectedCards = document.getElementById('image' + i);
+  selectedCards.addEventListener('click', function() {
+  cardFlip(selectedCards, i);
+  })
+  }
+
+  function cardFlip(selectedCards, index) {
+    
+  }
 });
+
+
