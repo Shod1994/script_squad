@@ -3,7 +3,7 @@
 
 }
 .game { 
-    background-color: cadetblue;
+    background-color: orangered;
     padding: 10%;
     margin: 25px
 
@@ -12,6 +12,6 @@
 }
 img{
      
-        box-shadow: 10px 10px 5px lightblue;
+        box-shadow: 10px 10px 10px   lightblue;
       
 } 
