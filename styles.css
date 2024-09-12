@@ -1,17 +1,11 @@
 .container {
-    zoom :70%;
-
+  zoom: 70%;
 }
-.game { 
-    background-color: orangered;
-    padding: 10%;
-    margin: 25px
-
-    
-    ;
+.game {
+  background-color: orangered;
+  padding: 10%;
+  margin: 25px;
 }
-img{
-     
-        box-shadow: 10px 10px 10px   lightblue;
-      
-} 
+img {
+  box-shadow: 10px 10px 10px lightblue;
+}
