@@ -22,5 +22,29 @@
     {
         "id": 6,
         "name": "images/monster6.png"
+    },
+    {
+        "id": 1,
+        "name": "images/monster1.png"
+    },
+    {
+        "id": 2,
+        "name": "images/monster2.png"
+    },
+    {
+        "id": 3,
+        "name": "images/monster3.png"
+    },
+    {
+        "id": 4,
+        "name": "images/monster4.png"
+    },
+    {
+        "id": 5,
+        "name": "images/monster5.png"
+    },
+    {
+        "id": 6,
+        "name": "images/monster6.png"
     }
 ]

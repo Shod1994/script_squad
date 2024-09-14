@@ -1,62 +1,59 @@
-// fetch the cards to the gameBoard
-document.addEventListener("DOMContentLoaded", function () {
-  // let cards = [
-  //   "images/monster1.png",
-  //   "images/monster2.png",
-  //   "images/monster3.png",
-  //   "images/monster4.png",
-  //   "images/monster5.png",
-  //   "images/monster6.png",
-  //   //Duplicate Images
-  //   "images/monster1.png",
-  //   "images/monster2.png",
-  //   "images/monster3.png",
-  //   "images/monster4.png",
-  //   "images/monster5.png",
-  //   "images/monster6.png",
-  // ];
+let cards = [];
 
-    let cards = [
-      {
-        "src": "images/monster1.png",
-        "value": 1
-      },
-      {
-        "src": "images/monster2.png",
-        "value": 2
-      },
-      {
-        "src": "images/monster3.png",
-        "value": 3
-      },
-      {
-        "src": "images/monster4.png",
-        "value": 4
-      },
-      {
-        "src": "images/monster5.png",
-        "value": 5
-      },
-      {
-        "src": "images/monster6.png",
-        "value": 6
-      }
-  ];
+// Fetch cards from JSON
+fetch('card.json')
+  .then(response => response.json())
+  .then(data => {
+    cards = data;
+    // Shuffle cards and set up the game once data is loaded
+    setupGame();
+    console.log(cards);
+  })
+  .catch(error => console.error('Error fetching JSON:', error));
 
-  // Shuffle cards on each refresh/reset
-  cards.sort(() => Math.random() - 0.5);
+function setupGame() {
+  // Shuffle cards
+  shuffle(cards);
 
-  // flip cards
-  for (let i = 1; i <= 12; i++) {
+  let clicked = [];
+  let firstSelectedIndex = null;
+  let secondSelectedIndex = null;
+
+  // Flip cards
+  for (let i = 1; i <= cards.length; i++) {
     let selectCards = document.getElementById("image" + i);
     selectCards.addEventListener("click", function () {
-      selectCards.src = cards[i - 1]; //Makes sure 0 is included so the proper images can be fetched
+      let cardIndex = i - 1; // Adjust for zero-based index
+      selectCards.src = cards[cardIndex].name; // Use the 'name' property from JSON
+      clicked.push(cardIndex);
+      
+      if (clicked.length === 2) {
+        if (cards[clicked[0]].id === cards[clicked[1]].id) {
+          // Cards match
+          setTimeout(() => {
+            alert('Match');
+            let firstSelectedCard = document.getElementById("image" + (clicked[0] + 1));
+            let secondSelectedCard = document.getElementById("image" + (clicked[1] + 1));
+            firstSelectedCard.style.visibility = 'hidden';
+            secondSelectedCard.style.visibility = 'hidden';
+            clicked = [];
+          }, 1000);
+        } else {
+          // Cards do not match
+          setTimeout(() => {
+            let firstSelectedCard = document.getElementById("image" + (clicked[0] + 1));
+            let secondSelectedCard = document.getElementById("image" + (clicked[1] + 1));
+            firstSelectedCard.src = "images/Card-Back.png";
+            secondSelectedCard.src = "images/Card-Back.png";
+            clicked = [];
+          }, 1000);
+        }
+      }
     });
   }
+}
 
-  // Do the cards match
-
-  // timer for the game
-
-  //reset
-});
+// Shuffle function
+function shuffle(array) {
+  array.sort(() => Math.random() - 0.5);
+}
